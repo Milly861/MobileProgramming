@@ -22,13 +22,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.taskcompleted.ui.theme.TaskCompletedTheme
+import com.example.taskmanager.ui.theme.TaskManagerTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TaskCompletedTheme {
+            TaskManagerTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -67,7 +67,7 @@ fun TaskCompletedScreen() {
 @Preview(showBackground = true)
 @Composable
 fun TaskCompletedPreview() {
-    TaskCompletedTheme {
+    TaskManagerTheme {
         TaskCompletedScreen()
     }
 }
