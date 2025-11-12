@@ -69,3 +69,30 @@ fun BusinessCard() {
         ContactSection()
     }
 }
+
+@Composable
+fun ProfileSection() {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Image(
+            painter = painterResource(R.drawable.android_logo),
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxWidth(0.3f)
+                .background(Color(0xff1f1f1f))
+        )
+        Text(
+            text = stringResource(R.string.name),
+            fontWeight = FontWeight.Bold,
+            fontSize = 24.sp,
+            color = Color.White,
+            modifier = Modifier.padding(top = 20.dp)
+        )
+        Text(
+            text = stringResource(R.string.title),
+            fontSize = 16.sp,
+            color = Color.White,
+        )
+    }
+}
