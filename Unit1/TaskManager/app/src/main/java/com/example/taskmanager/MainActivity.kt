@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    TaskCompletedScreen()
+                    TaskManagerScreen()
                 }
             }
         }
@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TaskCompletedScreen() {
+fun TaskManagerScreen() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -66,8 +66,8 @@ fun TaskCompletedScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun TaskCompletedPreview() {
+fun TaskManagerPreview() {
     TaskManagerTheme {
-        TaskCompletedScreen()
+        TaskManagerScreen()
     }
 }
