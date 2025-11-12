@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BusinessCard</string>
+    <string name="name">Sinichkina Milana</string>
+    <string name="title">Android Developer Extraordinaire</string>
+    <string name="phone">+7 (000) 000 84 26</string>
+    <string name="telegram">\@sinichkinamilana</string>
+    <string name="email">milana@gmail.com</string>
 </resources>
