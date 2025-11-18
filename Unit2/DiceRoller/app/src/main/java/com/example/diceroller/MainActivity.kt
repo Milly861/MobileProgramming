@@ -30,18 +30,13 @@ class MainActiviy : ComponentActivity() {
     }
 }
 
+@Preview
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun DiceRollerApp() {
+
 }
 
-@Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    DiceRollerTheme {
-        Greeting("Android")
-    }
+fun DiceWithButtonAndImage() {
+
 }
