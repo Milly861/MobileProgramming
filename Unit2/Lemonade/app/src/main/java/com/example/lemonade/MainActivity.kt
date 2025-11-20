@@ -131,3 +131,50 @@ fun LemonadeApp() {
         }
     }
 }
+
+@Composable
+fun LemonTextAndImage(
+    textLabelResourceId: Int,
+    drawableResourceId: Int,
+    contentDescriptionResourceId: Int,
+    onImageClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = modifier
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Button(
+                onClick = onImageClick,
+                shape = RoundedCornerShape(dimensionResource(R.dimen.button_corner_radius)),
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer)
+            ) {
+                Image(
+                    painter = painterResource(drawableResourceId),
+                    contentDescription = stringResource(contentDescriptionResourceId),
+                    modifier = Modifier
+                        .width(dimensionResource(R.dimen.button_image_width))
+                        .height(dimensionResource(R.dimen.button_image_height))
+                        .padding(dimensionResource(R.dimen.button_interior_padding))
+                )
+            }
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_vertical)))
+            Text(
+                text = stringResource(textLabelResourceId),
+                style = MaterialTheme.typography.bodyLarge
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun LemonPreview() {
+    LemonadeTheme {
+        LemonadeApp()
+    }
+}
