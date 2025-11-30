@@ -11,9 +11,20 @@ data class Event(
     val durationInMinutes: Int
 )
 
-val studyEvent = Event(
-    title = "Study Kotlin",
-    description = "Commit to studying Kotlin at least 15 minutes per day.",
-    daypart = Daypart.EVENING,
-    durationInMinutes = 15
-)
+fun main() {
+    val events = mutableListOf<Event>()
+
+    events.add(Event(title = "Wake up", description = "Time to get up", daypart = Daypart.MORNING, durationInMinutes = 0))
+    events.add(Event(title = "Eat breakfast", description = null, daypart = Daypart.MORNING, durationInMinutes = 15))
+    events.add(Event(title = "Learn about Kotlin", description = null, daypart = Daypart.AFTERNOON, durationInMinutes = 30))
+    events.add(Event(title = "Practice Compose", description = null, daypart = Daypart.AFTERNOON, durationInMinutes = 60))
+    events.add(Event(title = "Watch latest DevBytes video", description = null, daypart = Daypart.AFTERNOON, durationInMinutes = 10))
+    events.add(Event(title = "Check out latest Android Jetpack library", description = null, daypart = Daypart.EVENING, durationInMinutes = 45))
+
+    println("Количество запланированных событий: ${events.size}")
+
+    println("\nВсе события:")
+    events.forEach { event ->
+        println(event)
+    }
+}
