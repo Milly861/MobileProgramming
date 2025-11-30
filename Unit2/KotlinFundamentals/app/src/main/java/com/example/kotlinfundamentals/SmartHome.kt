@@ -1,21 +1,14 @@
 open class SmartDevice(val name: String, val category: String) {
 
     var deviceStatus = "online"
-
-    constructor(name: String, category: String, statusCode: Int) : this(name, category) {
-        deviceStatus = when (statusCode) {
-            0 -> "offline"
-            1 -> "online"
-            else -> "unknown"
-        }
-    }
+    open val deviceType = "unknown"
 
     open fun turnOn() {
-        println("Smart device is turned on.")
+        deviceStatus = "on"
     }
 
     open fun turnOff() {
-        println("Smart device is turned off.")
+        deviceStatus = "off"
     }
 }
 
@@ -47,7 +40,7 @@ class SmartTvDevice(deviceName: String, deviceCategory: String) :
     }
 
     override fun turnOn() {
-        deviceStatus = "on"
+        super.turnOn()
         println(
             "$name is turned on. Speaker volume is set to $speakerVolume and channel number is " +
                     "set to $channelNumber."
@@ -55,7 +48,7 @@ class SmartTvDevice(deviceName: String, deviceCategory: String) :
     }
 
     override fun turnOff() {
-        deviceStatus = "off"
+        super.turnOff()
         println("$name turned off")
     }
 }
@@ -76,13 +69,13 @@ class SmartLightDevice(deviceName: String, deviceCategory: String) :
     }
 
     override fun turnOn() {
-        deviceStatus = "on"
+        super.turnOn()
         brightnessLevel = 2
         println("$name turned on. The brightness level is $brightnessLevel.")
     }
 
     override fun turnOff() {
-        deviceStatus = "off"
+        super.turnOff()
         brightnessLevel = 0
         println("Smart Light turned off")
     }
@@ -127,8 +120,9 @@ class SmartHome(
 }
 
 fun main() {
-    val smartTvDevice = SmartDevice()
-    println("Device name is: ${smartTvDevice.name}")
-    smartTvDevice.turnOn()
-    smartTvDevice.turnOff()
+    var smartDevice: SmartDevice = SmartTvDevice("Android TV", "Entertainment")
+    smartDevice.turnOn()
+
+    smartDevice = SmartLightDevice("Google Light", "Utility")
+    smartDevice.turnOn()
 }
