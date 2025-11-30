@@ -21,10 +21,16 @@ fun main() {
     events.add(Event(title = "Watch latest DevBytes video", description = null, daypart = Daypart.AFTERNOON, durationInMinutes = 10))
     events.add(Event(title = "Check out latest Android Jetpack library", description = null, daypart = Daypart.EVENING, durationInMinutes = 45))
 
-    println("Количество запланированных событий: ${events.size}")
+    val shortEvents = events.filter { event ->
+        event.durationInMinutes < 60
+    }
 
-    println("\nВсе события:")
-    events.forEach { event ->
-        println(event)
+    val shortEventsCount = shortEvents.size
+
+    println("You have $shortEventsCount short events.")
+
+    println("\nКороткие события:")
+    shortEvents.forEach { event ->
+        println("- ${event.title} (${event.durationInMinutes} минут)")
     }
 }
