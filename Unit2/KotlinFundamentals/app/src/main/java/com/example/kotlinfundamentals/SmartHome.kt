@@ -1,7 +1,9 @@
-open class SmartDevice(val name: String, val category: String) {
+open class SmartDevice protected constructor(val name: String, val category: String) {
+
+    open val deviceType = "unknown"
 
     var deviceStatus = "online"
-    open val deviceType = "unknown"
+        protected set
 
     open fun turnOn() {
         deviceStatus = "on"
@@ -15,14 +17,14 @@ open class SmartDevice(val name: String, val category: String) {
 class SmartTvDevice(deviceName: String, deviceCategory: String) :
     SmartDevice(name = deviceName, category = deviceCategory) {
 
-    var speakerVolume = 2
+    private var speakerVolume = 2
         set(value) {
             if (value in 0..100) {
                 field = value
             }
         }
 
-    var channelNumber = 1
+    private var channelNumber = 1
         set(value) {
             if (value in 0..200) {
                 field = value
@@ -34,7 +36,7 @@ class SmartTvDevice(deviceName: String, deviceCategory: String) :
         println("Speaker volume increased to $speakerVolume.")
     }
 
-    fun nextChannel() {
+    protected fun nextChannel() {
         channelNumber++
         println("Channel number increased to $channelNumber.")
     }
@@ -55,8 +57,8 @@ class SmartTvDevice(deviceName: String, deviceCategory: String) :
 
 class SmartLightDevice(deviceName: String, deviceCategory: String) :
     SmartDevice(name = deviceName, category = deviceCategory) {
-
-    var brightnessLevel = 0
+    override val deviceType = "Smart Light"
+    private var brightnessLevel = 0
         set(value) {
             if (value in 0..100) {
                 field = value
@@ -85,11 +87,15 @@ class SmartHome(
     val smartTvDevice: SmartTvDevice,
     val smartLightDevice: SmartLightDevice
 ){
+    var deviceTurnOnCount = 0
+        private set
     fun turnOnTv() {
+        deviceTurnOnCount++
         smartTvDevice.turnOn()
     }
 
     fun turnOffTv() {
+        deviceTurnOnCount--
         smartTvDevice.turnOff()
     }
 
@@ -102,10 +108,12 @@ class SmartHome(
     }
 
     fun turnOnLight() {
+        deviceTurnOnCount++
         smartLightDevice.turnOn()
     }
 
     fun turnOffLight() {
+        deviceTurnOnCount--
         smartLightDevice.turnOff()
     }
 
