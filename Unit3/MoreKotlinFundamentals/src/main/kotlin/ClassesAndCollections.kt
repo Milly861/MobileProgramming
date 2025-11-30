@@ -21,11 +21,20 @@ fun main() {
     events.add(Event(title = "Watch latest DevBytes video", description = null, daypart = Daypart.AFTERNOON, durationInMinutes = 10))
     events.add(Event(title = "Check out latest Android Jetpack library", description = null, daypart = Daypart.EVENING, durationInMinutes = 45))
 
-    val eventsByDaypart = events.groupBy { event ->
-        event.daypart
-    }
+    println("Способ коллеги (через индекс):")
+    println("Last event of the day: ${events[events.size - 1].title}")
 
-    eventsByDaypart.forEach { (daypart, eventList) ->
-        println("${daypart.name.lowercase().replaceFirstChar { it.uppercase() }}: ${eventList.size} events")
-    }
+    println("\nУлучшенный способ (через last()):")
+    println("Last event of the day: ${events.last().title}")
+
+    println("Результат через индекс: ${events[events.size - 1].title}")
+    println("Результат через last(): ${events.last().title}")
+
+
+    val lastShortEvent = events.last { it.durationInMinutes < 60 }
+    println("Последнее короткое событие: ${lastShortEvent.title}")
+
+    val emptyList = emptyList<Event>()
+    val lastEventOrNull = emptyList.lastOrNull()
+    println("Последнее событие в пустом списке: ${lastEventOrNull?.title ?: "Список пуст"}")
 }
