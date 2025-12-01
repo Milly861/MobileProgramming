@@ -1,6 +1,7 @@
 package com.example.grid.data
 
 import com.example.grid.R
+import com.example.grid.model.Topic
 
 object DataSource {
     val topics = listOf(
