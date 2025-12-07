@@ -5,6 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -76,6 +79,7 @@ fun WoofApp() {
         }
     }
 }
+
 @Composable
 fun DogItem(
     dog: Dog,
@@ -85,7 +89,15 @@ fun DogItem(
     Card(
         modifier = modifier
     ) {
-        Column() {
+        Column(
+            modifier = Modifier
+                .animateContentSize(
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioNoBouncy,
+                        stiffness = Spring.StiffnessMedium
+                    )
+                )
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -112,12 +124,13 @@ fun DogItem(
         }
     }
 }
+
 @Composable
 private fun DogItemButton(
     expanded: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
-){
+) {
     IconButton(
         onClick = onClick,
         modifier = modifier
@@ -129,6 +142,7 @@ private fun DogItemButton(
         )
     }
 }
+
 @Composable
 fun WoofTopAppBar(modifier: Modifier = Modifier) {
     CenterAlignedTopAppBar(
@@ -158,7 +172,7 @@ fun WoofTopAppBar(modifier: Modifier = Modifier) {
 fun DogHobby(
     @StringRes dogHobby: Int,
     modifier: Modifier = Modifier
-){
+) {
     Column(
         modifier = modifier
     ) {
