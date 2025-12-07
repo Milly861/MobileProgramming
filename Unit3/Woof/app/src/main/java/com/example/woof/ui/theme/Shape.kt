@@ -15,8 +15,10 @@
  */
 package com.example.woof.ui.theme
 
-import androidx.compose.material3.Typography
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Shapes
+import androidx.compose.ui.unit.dp
 
-// Set of Material typography styles to start with
-val Typography = Typography(
+val Shapes = Shapes(
+    small = RoundedCornerShape(50.dp),
 )
