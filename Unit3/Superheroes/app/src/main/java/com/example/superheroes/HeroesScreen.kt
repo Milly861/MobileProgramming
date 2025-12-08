@@ -52,10 +52,12 @@ fun HeroesList(
 ) {
     val visibleState = remember {
         MutableTransitionState(false).apply {
+            // Start the animation immediately.
             targetState = true
         }
     }
 
+    // Fade in entry animation for the entire list
     AnimatedVisibility(
         visibleState = visibleState,
         enter = fadeIn(
@@ -150,6 +152,10 @@ fun HeroesPreview() {
         Surface (
             color = MaterialTheme.colorScheme.background
         ) {
+            /* Important: It is not a good practice to access data source directly from the UI.
+            In later units you will learn how to use ViewModel in such scenarios that takes the
+            data source as a dependency and exposes heroes.
+            */
             HeroesList(heroes = HeroesRepository.heroes)
         }
     }
