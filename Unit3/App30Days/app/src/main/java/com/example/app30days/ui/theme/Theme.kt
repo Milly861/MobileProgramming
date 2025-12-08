@@ -80,7 +80,7 @@ private val DarkColors = darkColorScheme(
     scrim = md_theme_dark_scrim,
 )
 @Composable
-fun AndroMonthTheme(
+fun App30DaysTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
