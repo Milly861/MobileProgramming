@@ -64,4 +64,23 @@ class GameViewModelTest {
         assertFalse(gameUiState.isGameOver)
     }
 
+    @Test
+    fun gameViewModel_AllWordsGuessed_UiStateUpdatedCorrectly() {
+        var expectedScore = 0
+        var currentGameUiState = viewModel.uiState.value
+        var correctPlayerWord = getUnscrambledWord(currentGameUiState.currentScrambledWord)
+        repeat(MAX_NO_OF_WORDS) {
+            expectedScore += SCORE_INCREASE
+            viewModel.updateUserGuess(correctPlayerWord)
+            viewModel.checkUserGuess()
+            currentGameUiState = viewModel.uiState.value
+            correctPlayerWord = getUnscrambledWord(currentGameUiState.currentScrambledWord)
+            // Assert that after each correct answer, score is updated correctly.
+            assertEquals(expectedScore, currentGameUiState.score)
+        }
+        // Assert that after all questions are answered, the current word count is up-to-date.
+        assertEquals(MAX_NO_OF_WORDS, currentGameUiState.currentWordCount)
+        // Assert that after 10 questions are answered, the game is over.
+        assertTrue(currentGameUiState.isGameOver)
+    }
 }
