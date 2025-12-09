@@ -2,7 +2,6 @@ package com.example.app30days
 
 import android.content.Intent
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -40,6 +39,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.app30days.model.DayRepo
 import com.example.app30days.ui.theme.App30DaysTheme
+import androidx.core.net.toUri
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,24 +51,23 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    app30daysApp()
+                    App30DaysApp()
                 }
             }
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun app30daysApp() {
-    Scaffold(topBar = { app30daysTopBar() }, bottomBar = { app30daysBottomBar() }) {
+fun App30DaysApp() {
+    Scaffold(topBar = { App30DaysTopBar() }, bottomBar = { App30DaysBottomBar() }) {
         DayScreenList(days = DayRepo.days, modifier = Modifier.padding(it))
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun app30daysTopBar() {
+fun App30DaysTopBar() {
     CenterAlignedTopAppBar(title = {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
@@ -88,7 +87,7 @@ fun app30daysTopBar() {
 }
 
 @Composable
-fun app30daysBottomBar(modifier: Modifier = Modifier) {
+fun App30DaysBottomBar(modifier: Modifier = Modifier) {
     BottomAppBar(modifier = modifier) {
         Column(
             modifier = Modifier
@@ -131,7 +130,7 @@ fun LinkText(
     }
     ClickableText(text = annotatedString, onClick = { it ->
         annotatedString.onLinkClick(it) {
-            ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it)))
+            ctx.startActivity(Intent(Intent.ACTION_VIEW, it.toUri()))
         }
     }, style = MaterialTheme.typography.titleMedium, modifier = modifier)
 }
@@ -152,6 +151,6 @@ fun AnnotatedString.onLinkClick(offset: Int, onClick: (String) -> Unit) {
 @Composable
 fun GreetingPreview() {
     App30DaysTheme {
-        app30daysApp()
+        App30DaysApp()
     }
 }
