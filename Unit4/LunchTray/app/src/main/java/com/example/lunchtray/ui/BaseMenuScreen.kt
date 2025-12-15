@@ -1,4 +1,3 @@
-
 package com.example.lunchtray.ui
 
 import androidx.compose.foundation.layout.Arrangement
@@ -50,6 +49,10 @@ fun BaseMenuScreen(
                     selected = selectedItemName == item.name,
                     onClick = onClick
                 )
+                    .padding(
+                        start = dimensionResource(R.dimen.padding_medium),
+                        end = dimensionResource(R.dimen.padding_medium),
+                    )
             )
         }
 
