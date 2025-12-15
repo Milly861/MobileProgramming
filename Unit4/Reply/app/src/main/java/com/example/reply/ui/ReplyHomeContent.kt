@@ -1,4 +1,3 @@
-
 package com.example.reply.ui
 
 import android.app.Activity
@@ -12,6 +11,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,6 +19,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -46,6 +47,7 @@ fun ReplyListOnlyContent(
 
     LazyColumn(
         modifier = modifier,
+        contentPadding = WindowInsets.safeDrawing.asPaddingValues(),
         verticalArrangement = Arrangement.spacedBy(
             dimensionResource(R.dimen.email_list_item_vertical_spacing)
         )
@@ -103,13 +105,14 @@ fun ReplyListAndDetailContent(
         ReplyDetailsScreen(
             replyUiState = replyUiState,
             modifier = Modifier
-                .padding(top = dimensionResource(R.dimen.email_list_item_vertical_spacing))
-                .weight(1f),
-            onBackPressed = {}
+                .weight(1f)
+                .padding(end = dimensionResource(R.dimen.email_list_only_horizontal_padding)),
+            onBackPressed = { activity.finish() }
         )
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReplyEmailListItem(
     email: Email,
