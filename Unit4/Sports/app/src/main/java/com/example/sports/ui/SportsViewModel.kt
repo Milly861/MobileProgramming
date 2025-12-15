@@ -1,4 +1,3 @@
-
 package com.example.sports.ui
 
 import androidx.lifecycle.ViewModel

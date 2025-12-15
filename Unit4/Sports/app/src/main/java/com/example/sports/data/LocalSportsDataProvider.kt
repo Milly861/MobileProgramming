@@ -1,4 +1,3 @@
-
 package com.example.sports.data
 
 import com.example.sports.R
@@ -7,7 +6,7 @@ import com.example.sports.model.Sport
 /**
  * Sports data
  */
-object LocalSportsDataProvider {
+object LocalSportsDataProvider{
     val defaultSport = getSportsData()[0]
 
     fun getSportsData(): List<Sport> {
@@ -16,7 +15,7 @@ object LocalSportsDataProvider {
                 id = 1,
                 titleResourceId = R.string.baseball,
                 subtitleResourceId = R.string.sports_list_subtitle,
-                playerCount = 9,
+                playerCount = 9 ,
                 olympic = true,
                 imageResourceId = R.drawable.ic_baseball_square,
                 sportsImageBanner = R.drawable.ic_baseball_banner,
