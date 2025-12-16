@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /*
  * Copyright (C) 2023 The Android Open Source Project
  *
@@ -16,14 +14,10 @@
  * limitations under the License.
  */
 
->>>>>>> 9fb48fe3418ad2ccbdb96835d0cc3c5c75469376
-package com.example.dessertclicker.model
-
-/**
- * [Dessert] is the data class to represent the Dessert imageId, price, and startProductionAmount
- */
-<<<<<<< HEAD
-data class Dessert(val imageId: Int, val price: Int, val startProductionAmount: Int)
-=======
-data class Dessert(val imageId: Int, val price: Int, val startProductionAmount: Int)
->>>>>>> 9fb48fe3418ad2ccbdb96835d0cc3c5c75469376
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    id("com.android.application") version "8.8.0" apply false
+    id("com.android.library") version "8.8.0" apply false
+    id("org.jetbrains.kotlin.android") version "2.1.0" apply false
+    id("org.jetbrains.kotlin.plugin.compose") version "2.1.0" apply false
+}

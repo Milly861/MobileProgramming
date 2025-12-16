@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /*
  * Copyright (C) 2023 The Android Open Source Project
  *
@@ -15,15 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
->>>>>>> 9fb48fe3418ad2ccbdb96835d0cc3c5c75469376
-package com.example.dessertclicker.model
-
-/**
- * [Dessert] is the data class to represent the Dessert imageId, price, and startProductionAmount
- */
-<<<<<<< HEAD
-data class Dessert(val imageId: Int, val price: Int, val startProductionAmount: Int)
-=======
-data class Dessert(val imageId: Int, val price: Int, val startProductionAmount: Int)
->>>>>>> 9fb48fe3418ad2ccbdb96835d0cc3c5c75469376
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Dessert Clicker"
+include(":app")
